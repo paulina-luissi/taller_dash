@@ -21,7 +21,18 @@ app.config.suppress_callback_exceptions = True
 
 # Load data from csv
 def load_data():
-    # To do: Completar la función 
+	# cargar el archivo CSV
+	df = pd.read_csv('datos_energia.csv')
+	
+	# convetir la columna time a formato datetime
+	df['time'] = pd.to_datetime(df['time'])
+	
+	#establecer time  como indice del df
+	df.set_index('time',inplace=True)
+	
+	#retornar el df
+	return df
+	
     
 
 # Cargar datos
